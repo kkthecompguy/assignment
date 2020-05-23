@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="text-center">
+          <h1>School Details</h1>
+        </div>
+        <div class="mt-5">
+          <form action="{% url 'school' student.pk %}" method="POST">
+            {% csrf_token %}
+            <fieldset>
+              <legend>Previous School 1</legend>
+              <input type="hidden" name="student_id" value="{{student.pk}}">
+              <div class="form-group">
+                <label for="school1">School Name</label>
+                {{form.school_name}}
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    {{form.city}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    {{form.state}}
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="startdate">Date Started</label>
+                    {{form.start_date}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="enddate">Date Ended</label>
+                    {{form.end_date}}
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Previous School 2</legend>
+              <div class="form-group">
+                <label for="school2">School Name</label>
+                {{form.school_name_2}}
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    {{form.city_2}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    {{form.state_2}}
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="startdate">Date Started</label>
+                    {{form.start_date_2}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="enddate">Date Ended</label>
+                    {{form.end_date_2}}
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <div class="form-row mt-3">
+              <div class="col-md-6">
+                <div class="form-group float-left">
+                  <a href="{% url 'student-detail' student.pk %}" class="btn btn-secondary btn-lg">Back</a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group float-right">
+                  <input type="submit" value="Next" class="btn btn-lg btn-info">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

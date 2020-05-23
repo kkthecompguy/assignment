@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <div class="text-center">
+          <h1>Residence Details</h1>
+        </div>
+        <div class="mt-5">
+          <form action="{% url 'residence' student.pk %}" method="POST">
+            {% csrf_token %}
+            <fieldset>
+              <legend>Current Residence Information</legend>
+              <input type="hidden" name="student_id" value="{{student.pk}}">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="streetAddress">Street Address</label>
+                  {{form.street_address}}
+                </div>
+                <div class="col-md-6">
+                  <label for="streetAddress2">Street Address Line 2</label>
+                  {{form.street_address_line_2}}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="city">City</label>
+                  {{form.city}}
+                </div>
+                <div class="col-md-6">
+                  <label for="state">State</label>
+                  {{form.state}}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="zipcode">Zip Code</label>
+                    {{form.zip_code}}
+                  </div>
+                </div>
+                <div class="col-md-6"></div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="homePhone">Home Phone No</label>
+                  {{form.home_phone}}
+                </div>
+                <div class="col-md-6">
+                  <label for="cellPhone">Cell Phone No</label>
+                  {{form.cell_phone}}
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Primary Residence Information</legend>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="streetAddress">Street Address</label>
+                  {{form.p_street_address}}
+                </div>
+                <div class="col-md-6">
+                  <label for="streetAddress2">Street Address Line 2</label>
+                  {{form.p_street_address_line_2}}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="city">City</label>
+                  {{form.p_city}}
+                </div>
+                <div class="col-md-6">
+                  <label for="state">State</label>
+                  {{form.p_state}}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="zipcode">Zip Code</label>
+                    {{form.p_zip_code}}
+                  </div>
+                </div>
+                <div class="col-md-6"></div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="homePhone">Home Phone No</label>
+                  {{form.p_home_phone}}
+                </div>
+                <div class="col-md-6">
+                  <label for="cellPhone">Cell Phone No</label>
+                  {{form.p_cell_phone}}
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Parent/Guardian Residence Information (Optional)</legend>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="streetAddress">Street Address</label>
+                  {{form.g_street_address}}
+                </div>
+                <div class="col-md-6">
+                  <label for="streetAddress2">Street Address Line 2</label>
+                  {{form.g_street_address_line_2}}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="city">City</label>
+                  {{form.g_city}}
+                </div>
+                <div class="col-md-6">
+                  <label for="state">State</label>
+                  {{form.g_state}}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="zipcode">Zip Code</label>
+                    {{form.g_zip_code}}
+                  </div>
+                </div>
+                <div class="col-md-6"></div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="homePhone">Home Phone No</label>
+                  {{form.g_home_phone}}
+                </div>
+                <div class="col-md-6">
+                  <label for="cellPhone">Cell Phone No</label>
+                  {{form.g_cell_phone}}
+                </div>
+              </div>
+            </fieldset>
+            <div class="form-row mt-3">
+              <div class="col-md-6">
+                <div class="form-group float-left">
+                  <a href="{% url 'student-detail' student.pk %}" class="btn btn-secondary btn-lg">Back</a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group float-right">
+                  <input type="submit" value="Next" class="btn btn-lg btn-info">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

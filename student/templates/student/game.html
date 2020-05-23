@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="text-center">
+          <h1>Game Details</h1>
+        </div>
+        <div class="mt-5">
+          <form action="{% url 'game' student.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="student_id" value="{{student.pk}}">
+            <div class="form-group">
+              <label for="game">Which game did you qualify for ?</label>
+              {{form.game}}
+            </div>
+            <div class="form-group">
+              <label for="game">At what level of competition?</label>
+              {{form.level}}
+            </div>
+            <div class="form-row mt-3">
+              <div class="col-md-6">
+                <div class="form-group float-left">
+                  <a href="{% url 'student-detail' student.pk %}" class="btn btn-secondary btn-lg">Back</a>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group float-right">
+                  <input type="submit" value="Finish" class="btn btn-lg btn-info">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

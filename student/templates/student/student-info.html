@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="text-center">
+          <h1>Registration</h1>
+        </div>
+        <div class="py-5">
+          <h6>Additional documents for registration</h6>
+          <p>Bring this registration form and the following documentation to the school office.</p>
+          <ul>
+            <li>Original Certified Birth Certificate</li>
+            <li>Original Social Security Card</li>
+            <li>Current Immunization Form</li>
+            <li>Current Proofs of Residence (ex. power, water or gas bill)</li>
+            <li>Other</li>
+          </ul>
+        </div>
+        <form action="{% url 'index' %}" method="POST">
+          {% csrf_token %}
+          {{form|crispy}}
+          <div class="form-row mt-3">
+            <div class="col-md-6">
+              <!-- <div class="form-group float-left">
+                <a href="/" class="btn btn-secondary btn-md">Back</a>
+              </div> -->
+            </div>
+            <div class="col-md-6">
+              <div class="form-group float-right">
+                <input type="submit" value="Next" class="btn btn-lg btn-info">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

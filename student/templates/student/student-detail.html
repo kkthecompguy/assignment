@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="container">
+    <div class="text-center mb-4 mt-4">
+      <h1>Complete Registration</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h4>Your details</h4>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>Name: {{student.first_name}} {{student.last_name}}</li>
+              <li>Gender: {{student.gender}}</li>
+              <li>Email: {{student.email}}</li>
+              <li>Semester: {{student.semester}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div>
+          <p><span>Residence Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'residence' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
+          <p><span>Contact Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'contact' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
+          <p><span>Medical Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'medical' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
+          <p><span>School Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'school' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
+          <p><span>Games Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'game' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
