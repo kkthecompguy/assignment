@@ -69,6 +69,9 @@ class Contact(models.Model):
   last_name_2 = models.CharField(max_length=100)
   phone_2 = models.CharField(max_length=13)
 
+  def __str__(self):
+    return self.first_name
+
 
 class Medical(models.Model):
   student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -83,7 +86,7 @@ class Medical(models.Model):
 
 
 class School(models.Model):
-  student_id = student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+  student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
   school_name = models.CharField(max_length=50)
   city = models.CharField(max_length=10)
   state = models.CharField(max_length=10)
@@ -100,7 +103,7 @@ class School(models.Model):
 
 
 class Game(models.Model):
-  student_id = student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+  student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
   game = models.CharField(max_length=20)
   level = models.CharField(max_length=20)
 

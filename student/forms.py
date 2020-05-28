@@ -48,7 +48,6 @@ class ContactForm(forms.ModelForm):
   class Meta:
     model = Contact
     fields = '__all__'
-    exclude =  ['student_id']
 
 
 class MedicalForm(forms.ModelForm):

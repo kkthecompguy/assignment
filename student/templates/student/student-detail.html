@@ -7,7 +7,7 @@
       <h1>Complete Registration</h1>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="card">
           <div class="card-header">
             <h4>Your details</h4>
@@ -22,13 +22,54 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div>
-          <p><span>Residence Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'residence' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
-          <p><span>Contact Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'contact' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
-          <p><span>Medical Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'medical' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
-          <p><span>School Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'school' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
-          <p><span>Games Info</span> <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'game' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a></p>
+          <p>
+            <span>Residence Info</span>
+            {% if residence_info != 0 %}
+            <span class="badge badge-pill badge-warning">100%</span> 
+            <a href="{% url 'residence' student.pk %}" class="btn btn-primary btn-sm float-right">Add New</a>
+            {% else %}
+            <span class="badge badge-pill badge-warning">0%</span> 
+            <a href="{% url 'residence' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a>
+            {% endif %}
+          </p>
+          <p>
+            <span>Contact Info</span> 
+            {% if contact_info != 0 %}
+            <span class="badge badge-pill badge-warning">100%</span>
+            <a href="{% url 'contact' student.pk %}" class="btn btn-primary btn-sm float-right">Add New</a>
+            {% else %}
+            <span class="badge badge-pill badge-warning">0%</span>
+            <a href="{% url 'contact' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a>
+            {% endif %}
+          </p>
+          <p>
+            <span>Medical Info</span> 
+            {% if medical_info != 0 %}
+            <span class="badge badge-pill badge-warning">100%</span> 
+            <a href="{% url 'medical' student.pk %}" class="btn btn-primary btn-sm float-right">Add New</a>
+            {% else %}
+            <span class="badge badge-pill badge-warning">0%</span> 
+            <a href="{% url 'medical' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a>
+            {% endif %}
+          </p>
+          <p>
+            <span>School Info</span> 
+            {% if school_info != 0 %}
+            <span class="badge badge-pill badge-warning">100%</span> <a href="{% url 'school' student.pk %}" class="btn btn-primary btn-sm float-right">Add New</a>
+            {% else %}
+            <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'school' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a>
+            {% endif %}
+          </p>
+          <p>
+            <span>Games Info</span> 
+            {% if game_info != 0 %}
+            <span class="badge badge-pill badge-warning">100%</span> <a href="{% url 'game' student.pk %}" class="btn btn-primary btn-sm float-right">Add New</a>
+            {% else %}
+            <span class="badge badge-pill badge-warning">0%</span> <a href="{% url 'game' student.pk %}" class="btn btn-primary btn-sm float-right">Finish up</a>
+            {% endif %}
+          </p>
         </div>
       </div>
     </div>

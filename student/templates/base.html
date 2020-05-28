@@ -12,7 +12,13 @@
       <a href="/" class="navbar-brand">Rehema School</a>
     </div>
   </nav>
-  
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">
+        {{message}}
+      </div>
+    {% endfor %}
+  {% endif %}
   {% block content %}
   {% endblock %}
 </body>

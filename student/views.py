@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Student
+from django.contrib import messages
+from .models import Student, Medical
 from .forms import StudentForm, ResidenceForm, ContactForm, MedicalForm, SchoolForm, GameForm
 
 # Create your views here.
@@ -9,6 +10,8 @@ def index(request):
     form = StudentForm(request.POST)
     if form.is_valid():
       form.save()
+      messages.success(request, "Your details were saved successfully")
+      return redirect('student-list')
   context = {
     'form': form
   }
@@ -22,6 +25,7 @@ def residence(request, pk):
     form = ResidenceForm(request.POST)
     if form.is_valid():
       form.save()
+      messages.success(request, "Your details were saved successfully")
       return redirect('contact', pk=pk)
   context = {
     'form': form,
@@ -34,10 +38,13 @@ def contact(request, pk):
   student = get_object_or_404(Student, pk=pk)
   form = ContactForm()
   if request.method == 'POST':
+    print(request.POST)
     form = ContactForm(request.POST)
+    print(form)
     if form.is_valid():
-      print(form)
+      print(True)
       form.save()
+      messages.success(request, "Your details were saved successfully")
       return redirect('medical', pk=pk)
   context = {
     'form': form,
@@ -48,11 +55,16 @@ def contact(request, pk):
 
 def medical(request, pk):
   student = get_object_or_404(Student, pk=pk)
+  
   form = MedicalForm()
   if request.method == 'POST':
+    # print(request.POST)
     form = MedicalForm(request.POST)
+    print(form)
     if form.is_valid():
+      print(True)
       form.save()
+      messages.success(request, "Your details were saved successfully")
       return redirect('school', pk=pk)
   context = {
     'form': form,
@@ -68,6 +80,7 @@ def school(request, pk):
     form = SchoolForm(request.POST)
     if form.is_valid():
       form.save()
+      messages.success(request, "Your details were saved successfully")
       return redirect('game', pk=pk)
   context = {
     'form': form,
@@ -83,6 +96,7 @@ def game(request, pk):
     form = GameForm(request.POST)
     if form.is_valid():
       form.save()
+      messages.success(request, "Your details were saved successfully")
       return redirect('student-detail', pk=pk)
   context = {
     'form': form,
@@ -101,7 +115,17 @@ def student_list_view(request):
 
 def student_detail(request, pk):
   student = get_object_or_404(Student, pk=pk)
+  residence_info = student.residence_set.all().count() 
+  contact_info = student.contact_set.all().count()
+  medical_info = student.medical_set.all().count()
+  school_info = student.school_set.all().count()
+  game_info = student.game_set.all().count()
   context = {
-    'student': student
+    'student': student,
+    'residence_info': residence_info,
+    'contact_info': contact_info,
+    'medical_info':  medical_info,
+    'school_info': school_info,
+    'game_info': game_info
   }
   return render(request, 'student/student-detail.html', context)
